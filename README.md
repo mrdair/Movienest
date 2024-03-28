@@ -56,5 +56,5 @@ Feel free to contribute to this project by forking the repository and submitting
 
 ## Contact
 
-For any questions or feedback, please contact [Mohammadreza Davoodabdi](mailto:mohammadrezadavidabadi@gmail.com).
+For any questions or feedback, please contact [Mohammadreza Davoodabadi](mailto:mohammadrezadavidabadi@gmail.com).
 
