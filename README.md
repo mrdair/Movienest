@@ -22,7 +22,7 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 - **Data Governance:** dbt ensures consistent data transformations and documentation.
 
 
-## Pipeline
+## Architecture
 ![ELT Zoomcamp project ](https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline/assets/51988179/5f3432d1-f1a0-4468-8e3f-7d2f0ac743bc)
 
 ## Getting Started
