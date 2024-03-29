@@ -22,27 +22,8 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 - **Data Governance:** dbt ensures consistent data transformations and documentation.
 
 
-## Project Structure
-```
-.
-├── README.md (this file)
-├── airflow
-│   ├── dags
-│   │   └── my_elt_pipeline.py
-│   ├── docker-compose.yml
-│   ├── ... (other Airflow configuration files)
-├── dbt
-│   ├── profiles.yml
-│   ├── models
-│   │   └── ... (dbt models for data transformation)
-│   ├── ... (other dbt configuration files)
-├── terraform
-│   ├── main.tf
-│   ├── outputs.tf
-│   ├── variables.tf
-│   └── ... (other Terraform configuration files)
-└── .env (environment variables)
-```
+## Pipeline
+![ELT Zoomcamp project ](https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline/assets/51988179/5f3432d1-f1a0-4468-8e3f-7d2f0ac743bc)
 
 ## Getting Started
 
