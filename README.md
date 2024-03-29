@@ -2,87 +2,116 @@
 
 This project automates an Extract, Load, Transform (ELT) pipeline to ingest movie data from the TMDB Movies dataset on Kaggle, store it in Azure Blob Storage, and transform it for use in Snowflake, a cloud data warehouse. The pipeline runs daily to keep your data warehouse up-to-date with the latest movie information.
 
-## Project Overview
+## Description
 
-This project demonstrates various data engineering techniques:
+This project implements a fully automated Extract, Load, Transform (ELT) data pipeline for a Kaggle dataset. It leverages a modern data stack with the following technologies:
 
-- **Daily Data Ingestion:** Scheduled download of the TMDB Movies dataset from Kaggle using Docker.
-- **Data Storage:** Uploading data to Azure Blob Storage using Docker.
-- **Data Orchestration:** Scheduling data pipeline execution with Apache Airflow.
-- **Data Warehousing:** Loading and storing data in Snowflake (cloud data warehouse).
-- **Data Transformation:** Transforming data using dbt for improved analysis.
-- **Infrastructure as Code (IaC):** Provisioning data lake (Azure Blob Storage) and data warehouse (Snowflake) using Terraform.
-- **Optional Data Visualization:** Generating simplified two-tier diagrams with Google Looker (for clarity).
+- **Infrastructure as Code (IaC):** Terraform
+- **Workflow Orchestration:** Apache Airflow (Dockerized)
+- **Cloud Data Warehouse:** Snowflake
+- **Data Lake:** Azure Blob Storage
+- **Data Transformation:** dbt
+- **Data Visualization:** Google Looker (diagrams)
 
-## Technologies Used
+## Key Features
 
-- Docker: Containerization for data download and upload.
-- Docker Compose: Orchestrates Docker containers for streamlined execution.
-- Apache Airflow: Schedules and manages data pipeline tasks.
-- Snowflake: Cloud-based data warehouse for storing and querying transformed data.
-- dbt: Transforms data within Snowflake for improved usability.
-- Terraform: IaC tool for provisioning and managing cloud resources (Azure Blob Storage and Snowflake).
-- Google Looker (optional): Data visualization tool (for basic diagrams).
+- **Automation:** The entire ELT process is orchestrated by Airflow, running within Docker containers for a consistent and portable environment.
+- **Configuration Management:** Environment variables in a `.env` file handle sensitive information.
+- **Modular Design:** The pipeline is separated into well-defined stages (download, upload, transformation, visualization) for maintainability.
+- **Scalability:** The infrastructure is provisioned using Terraform, allowing for easy scaling as data volume grows.
+- **Data Governance:** dbt ensures consistent data transformations and documentation.
+
 
 ## Project Structure
-
 ```
 .
-├── README.md  (This file)
-├── data         (Directory for raw data downloaded from Kaggle)
-├── docker       (Directory for Dockerfile and docker-compose.yml)
-├── airflow      (Directory for Airflow DAGs and configuration)
-├── dbt          (Directory for dbt models)
-└── terraform    (Directory for Terraform configuration)
-    ├── azure      (Configuration for Azure Blob Storage)
-    └── snowflake  (Configuration for Snowflake data warehouse)
+├── README.md (this file)
+├── airflow
+│   ├── dags
+│   │   └── my_elt_pipeline.py
+│   ├── docker-compose.yml
+│   ├── ... (other Airflow configuration files)
+├── dbt
+│   ├── profiles.yml
+│   ├── models
+│   │   └── ... (dbt models for data transformation)
+│   ├── ... (other dbt configuration files)
+├── terraform
+│   ├── main.tf
+│   ├── outputs.tf
+│   ├── variables.tf
+│   └── ... (other Terraform configuration files)
+└── .env (environment variables)
 ```
 
 ## Getting Started
 
 ### Prerequisites
 
-Ensure you have the following installed and set up:
+- Docker installed
+- Terraform installed
+- Airflow configured
+- Snowflake account with access
+- Azure Blob Storage account with access
+- dbt Cloud account (or local dbt setup)
+- Google Looker account (optional)
 
-- Docker and Docker Compose
-- Azure account with appropriate permissions
-- Snowflake account
-- dbt Cloud account (free tier available)
-- Terraform
+## Setup Instructions
 
-### Setup Instructions
+1. **Clone the Repository:**
 
-1. **Set Up Azure Blob Storage (Terraform):**
-   - Edit `terraform/azure/main.tf` with your Azure credentials and desired Blob Storage parameters.
-   - Run `terraform init` and `terraform apply` in the `terraform/azure` directory.
+    ```bash
+    git clone https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline.git
+    ```
 
-2. **Set Up Snowflake Data Warehouse (Terraform):**
-   - Edit `terraform/snowflake/main.tf` with your Snowflake credentials and desired data warehouse configuration.
-   - Run `terraform init` and `terraform apply` in the `terraform/snowflake` directory.
+2. **Create `.env` File:**
+    - Create a file named `.env` in the project root directory.
+    - Add environment variables for sensitive information (e.g., passwords, connection strings) following the format `<KEY>=<VALUE>`. **Example:**
 
-3. **Configure Airflow (Optional):**
-   - Follow Airflow's documentation for configuration if using a local installation.
-   - Connect Airflow to your Snowflake data warehouse.
+        ```
+        KAGGLE_USERNAME=your_kaggle_username
+        KAGGLE_API_KEY=your_kaggle_api_key
+        AZURE_STORAGE_CONNECTION_STRING=your_azure_storage_connection_string
+        SNOWFLAKE_ACCOUNT=your_snowflake_account
+        SNOWFLAKE_USER=your_snowflake_user
+        SNOWFLAKE_PASSWORD=your_snowflake_password
+        SNOWFLAKE_WAREHOUSE=your_snowflake_warehouse
+        SNOWFLAKE_DATABASE=your_snowflake_database
+        SNOWFLAKE_SCHEMA=your_snowflake_schema
+        DBT_CLOUD_PROJECT=your_dbt_cloud_project (if using dbt Cloud)
+        GOOGLE_LOOKER_CLIENT_ID=your_google_looker_client_id (optional)
+        GOOGLE_LOOKER_CLIENT_SECRET=your_google_looker_client_secret (optional)
+        ```
 
-4. **Build and Run Docker Containers:**
-   - Build the Docker image: `docker-compose build`
-   - Run the containers: `docker-compose up`
+3. **Initialize Terraform:**
 
-5. **Run Airflow DAG (Optional):**
-   - Use the Airflow UI or CLI to trigger the DAG manually if not run by Docker containers.
+    ```bash
+    cd terraform
+    terraform init
+    ```
 
-6. **Data Transformation with dbt:**
-   - Edit dbt models in the `dbt` directory as per your transformation requirements.
-   - Run `dbt run` to execute the dbt models and transform data in Snowflake.
+4. **Apply Terraform Configuration:**
 
-## Optional Data Visualization
+    ```bash
+    terraform apply
+    ```
 
-Connect Google Looker to your Snowflake data warehouse to create basic two-tier diagrams for visualizing the data flow (data lake -> data warehouse).
+5. **Configure and Start Airflow:**
+    - Follow Airflow's documentation to configure the web UI and scheduler.
+    - Start Airflow using Docker:
 
-## Additional Notes
+        ```bash
+        cd airflow
+        docker-compose up -d
+        ```
 
-- Modify the Dockerfile and `docker-compose.yml` for different Kaggle datasets or download locations.
-- Adjust Airflow DAGs and dbt models as needed for specific data processing requirements.
+6. **Set Up dbt:**
+    - Set up dbt Cloud or local dbt environment according to your preference.
+    - Configure dbt profiles to connect to Snowflake.
+
+7. **Configure Google Looker (Optional):**
+    - Create a Looker connection to Snowflake.
+    - (Optional) Set up API credentials for Looker integration (if using).
 
 ## Contact
 
