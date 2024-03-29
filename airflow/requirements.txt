@@ -1,3 +1,0 @@
-kaggle
-snowflake-connector-python
-azure-storage-blob
