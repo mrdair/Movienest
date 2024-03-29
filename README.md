@@ -1,60 +1,90 @@
-# TMDB Movies Dataset ELT Pipeline
+# ELT Project: TMDB Movies to Snowflake with Daily Updates
 
-Welcome to the TMDB Movies dataset ELT (Extract, Load, Transform) pipeline project README. This project automates the process of downloading the TMDB Movies dataset, uploading it to Azure Blob Storage, and then transforming and loading it into Snowflake using Mage, dbt, Google Lookup, and Terraform.
+This project automates an Extract, Load, Transform (ELT) pipeline to ingest movie data from the TMDB Movies dataset on Kaggle, store it in Azure Blob Storage, and transform it for use in Snowflake, a cloud data warehouse. The pipeline runs daily to keep your data warehouse up-to-date with the latest movie information.
 
-## About the TMDB Movies Dataset
+## Project Overview
 
-The TMDB Movies dataset contains information about over 900,000 movies and is refreshed daily with all the latest changes, ensuring you have the most current movie data at your fingertips!
+This project demonstrates various data engineering techniques:
+
+- **Daily Data Ingestion:** Scheduled download of the TMDB Movies dataset from Kaggle using Docker.
+- **Data Storage:** Uploading data to Azure Blob Storage using Docker.
+- **Data Orchestration:** Scheduling data pipeline execution with Apache Airflow.
+- **Data Warehousing:** Loading and storing data in Snowflake (cloud data warehouse).
+- **Data Transformation:** Transforming data using dbt for improved analysis.
+- **Infrastructure as Code (IaC):** Provisioning data lake (Azure Blob Storage) and data warehouse (Snowflake) using Terraform.
+- **Optional Data Visualization:** Generating simplified two-tier diagrams with Google Looker (for clarity).
+
+## Technologies Used
+
+- Docker: Containerization for data download and upload.
+- Docker Compose: Orchestrates Docker containers for streamlined execution.
+- Apache Airflow: Schedules and manages data pipeline tasks.
+- Snowflake: Cloud-based data warehouse for storing and querying transformed data.
+- dbt: Transforms data within Snowflake for improved usability.
+- Terraform: IaC tool for provisioning and managing cloud resources (Azure Blob Storage and Snowflake).
+- Google Looker (optional): Data visualization tool (for basic diagrams).
 
 ## Project Structure
 
+```
+.
+├── README.md  (This file)
+├── data         (Directory for raw data downloaded from Kaggle)
+├── docker       (Directory for Dockerfile and docker-compose.yml)
+├── airflow      (Directory for Airflow DAGs and configuration)
+├── dbt          (Directory for dbt models)
+└── terraform    (Directory for Terraform configuration)
+    ├── azure      (Configuration for Azure Blob Storage)
+    └── snowflake  (Configuration for Snowflake data warehouse)
+```
 
-## Setup and Installation
+## Getting Started
 
-1. **Docker Setup**: Ensure Docker and Docker Compose are installed on your machine.
-2. **Azure Blob Storage**: Create a storage account and obtain the necessary credentials (account name, access key).
-3. **Snowflake**: Set up a Snowflake account and obtain the connection details (account name, username, password, warehouse name, database name, and schema name).
-4. **Google Lookup**: Sign up for Google Cloud services to use Google Lookup for creating diagrams.
-5. **Terraform**: Install Terraform for managing infrastructure as code (IaC).
+### Prerequisites
 
-## Usage
+Ensure you have the following installed and set up:
 
-### 1. Automated Data Download and Upload
+- Docker and Docker Compose
+- Azure account with appropriate permissions
+- Snowflake account
+- dbt Cloud account (free tier available)
+- Terraform
 
-- Run `docker-compose up` to automate the process of downloading the TMDB Movies dataset and uploading it to Azure Blob Storage.
-- The Dockerfile and docker-compose.yml automate the setup and execution of this process.
+### Setup Instructions
 
-### 2. Data Pipeline with Mage
+1. **Set Up Azure Blob Storage (Terraform):**
+   - Edit `terraform/azure/main.tf` with your Azure credentials and desired Blob Storage parameters.
+   - Run `terraform init` and `terraform apply` in the `terraform/azure` directory.
 
-### 3. Data Transformation with dbt
+2. **Set Up Snowflake Data Warehouse (Terraform):**
+   - Edit `terraform/snowflake/main.tf` with your Snowflake credentials and desired data warehouse configuration.
+   - Run `terraform init` and `terraform apply` in the `terraform/snowflake` directory.
 
-- Use dbt (`dbt_project.yml` and `transform_data.sql`) to transform the loaded data in Snowflake.
-- Customize the transformation SQL scripts as per your data requirements.
+3. **Configure Airflow (Optional):**
+   - Follow Airflow's documentation for configuration if using a local installation.
+   - Connect Airflow to your Snowflake data warehouse.
 
-### 4. Diagrams with Google Lookup
+4. **Build and Run Docker Containers:**
+   - Build the Docker image: `docker-compose build`
+   - Run the containers: `docker-compose up`
 
-- Utilize Google Lookup to create architecture and data flow diagrams (`architecture_diagram.png`, `data_flow_diagram.png`).
-- Update the diagrams to reflect your specific data pipeline architecture.
+5. **Run Airflow DAG (Optional):**
+   - Use the Airflow UI or CLI to trigger the DAG manually if not run by Docker containers.
 
-## Infrastructure as Code (IaC) with Terraform
+6. **Data Transformation with dbt:**
+   - Edit dbt models in the `dbt` directory as per your transformation requirements.
+   - Run `dbt run` to execute the dbt models and transform data in Snowflake.
 
-- Use Terraform (`main.tf` and `variables.tf`) to provision and manage the infrastructure, including Snowflake, Azure Blob Storage, and other resources.
+## Optional Data Visualization
 
-## Contributing
+Connect Google Looker to your Snowflake data warehouse to create basic two-tier diagrams for visualizing the data flow (data lake -> data warehouse).
 
-Feel free to contribute to this project by forking the repository and submitting pull requests.
+## Additional Notes
 
-## Acknowledgements
-
-- TMDB for providing the Movies dataset.
-- Microsoft Azure for Azure Blob Storage.
-- Snowflake for the cloud data warehouse.
-- Mage for workflow orchestration.
-- dbt for data transformation.
-- Google Cloud services for Google Lookup.
-- Terraform for infrastructure as code.
+- Modify the Dockerfile and `docker-compose.yml` for different Kaggle datasets or download locations.
+- Adjust Airflow DAGs and dbt models as needed for specific data processing requirements.
 
 ## Contact
 
-For any questions or feedback, please contact [Mohammadreza Davoodabadi](mailto:mohammadrezadavidabadi@gmail.com).
+If you have any questions or require assistance with this project, feel free to reach out: [Mohammadreza Davoodabadi](mailto:mohammadrezadavidabadi@gmail.com).
 
