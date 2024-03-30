@@ -69,9 +69,6 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
         SNOWFLAKE_WAREHOUSE=your_snowflake_warehouse
         SNOWFLAKE_DATABASE=your_snowflake_database
         SNOWFLAKE_SCHEMA=your_snowflake_schema
-        DBT_CLOUD_PROJECT=your_dbt_cloud_project (if using dbt Cloud)
-        GOOGLE_LOOKER_CLIENT_ID=your_google_looker_client_id (optional)
-        GOOGLE_LOOKER_CLIENT_SECRET=your_google_looker_client_secret (optional)
         ```
 
 3. **Initialize Terraform:**
@@ -100,9 +97,9 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
     - Set up dbt Cloud or local dbt environment according to your preference.
     - Configure dbt profiles to connect to Snowflake.
 
-7. **Configure Google Looker (Optional):**
+7. **Configure Google Looker:**
     - Create a Looker connection to Snowflake.
-    - (Optional) Set up API credentials for Looker integration (if using).
+    - Set up API credentials for Looker integration.
 
 ## Free Course & Supportive Community!
 A huge shoutout to [DataTalks.Club](https://datatalks.club) for their fantastic free Data Engineering [course](https://github.com/DataTalksClub/data-engineering-zoomcamp)! It provided the foundation for this project. Check it out if you're looking to level up your skills. 
