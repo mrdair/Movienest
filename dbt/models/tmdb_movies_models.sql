@@ -1,0 +1,32 @@
+WITH raw_movies AS (
+    SELECT *
+    FROM tmdb_dataset.raw.raw_movies
+)
+
+SELECT
+    ID,
+    TITLE,
+    VOTE_AVERAGE,
+    VOTE_COUNT,
+    STATUS,
+    RELEASE_DATE,
+    REVENUE,
+    RUNTIME,
+    BUDGET,
+    IMDB_ID,
+    ORIGINAL_LANGUAGE,
+    ORIGINAL_TITLE,
+    OVERVIEW,
+    POPULARITY,
+    TAGLINE,
+    GENRES,
+    PRODUCTION_COMPANIES,
+    PRODUCTION_COUNTRIES,
+    SPOKEN_LANGUAGES,
+    "CAST",
+    DIRECTOR,
+    DIRECTOR_OF_PHOTOGRAPHY,
+    WRITERS,
+    PRODUCERS,
+    MUSIC_COMPOSER
+FROM raw_movies
