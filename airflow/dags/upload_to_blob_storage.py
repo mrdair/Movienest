@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.utils.dates import days_ago
 from airflow.models import Variable
 from airflow.operators.python_operator import PythonOperator
-from operators.download_kaggle_operator import DownloadKaggleOperator
+from operators.upload_to_blob_operator import UploadToBlobOperator
 
 default_args = {
     'owner': 'airflow',
@@ -14,19 +14,20 @@ default_args = {
 }
 
 dag = DAG(
-    'download_kaggle_dataset',
+    'upload_to_blob_storage',
     default_args=default_args,
-    description='DAG to download dataset from Kaggle',
+    description='DAG to upload dataset to Azure Blob Storage',
     schedule_interval=None,
 )
 
-download_kaggle_task = DownloadKaggleOperator(
-    task_id='download_kaggle_data',
-    kaggle_dataset_name=Variable.get('kaggle_dataset_name'),
-    kaggle_username=Variable.get('kaggle_username'),
-    kaggle_key=Variable.get('kaggle_key'),
-    download_path='/tmp',
+upload_to_blob_task = UploadToBlobOperator(
+    task_id='upload_to_blob_storage',
+    blob_name='example_dataset.csv',
+    storage_account_name=Variable.get('storage_account_name'),
+    storage_account_key=Variable.get('storage_account_key'),
+    container_name='datasets',
+    local_file_path='/tmp/example_dataset.csv',
     dag=dag,
 )
 
-download_kaggle_task
+upload_to_blob_task

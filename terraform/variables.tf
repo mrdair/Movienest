@@ -9,17 +9,14 @@ terraform {
 
 provider "azurerm" {
   features {}
-  # Azure credentials and region configuration
 }
 
-# Create Azure Blob Storage container
 resource "azurerm_storage_container" "example" {
   name                  = "myblobcontainer"
   storage_account_name  = azurerm_storage_account.example.name
   container_access_type = "private"
 }
 
-# Create Snowflake database and user
 resource "snowflake_database" "example" {
   name        = "mydatabase"
   comment     = "Example Snowflake database"
@@ -32,7 +29,6 @@ resource "snowflake_user" "example" {
   password   = "mypassword"
 }
 
-# Example output
 output "storage_container_url" {
   value = azurerm_storage_container.example.primary_blob_endpoint
 }
