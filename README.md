@@ -28,7 +28,7 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 Our analysis utilizes two charts:
 
 1. **TMDB Genres Chart:** Categorizes movies based on their genre across all time periods.
-2. **TMDB Total Budget Chart:** Explores the budgetary trends of films according to their release year.
+2. **TMDB Total Budget Chart:** The chart showcases the annual movie production budget by aggregating individual film budgets.
 
 [Access the detailed analysis and charts here](https://lookerstudio.google.com/reporting/b8c5951a-efa2-43c7-a518-dfdd25bf425f) 
 
