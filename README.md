@@ -1,8 +1,12 @@
-# ELT Project: TMDB Movies to Snowflake with Daily Updates
+# Movinest (Data Engineering Zoomcamp Final Project) - <u>[DataTalksClub](https://datatalks.club/)</u>
 
-This project automates an Extract, Load, Transform (ELT) pipeline to ingest movie data from the TMDB Movies dataset on Kaggle, store it in Azure Blob Storage, and transform it for use in Snowflake, a cloud data warehouse. The pipeline runs daily to keep your data warehouse up-to-date with the latest movie information.
+This project automates an Extract, Load, Transform (ELT) pipeline to ingest movie data from the TMDB Movies dataset on Kaggle, store it in Azure Blob Storage, and transform it for use in Snowflake, a cloud data warehouse.
 
 ## Description
+
+### Dataset 
+<u>[The TMDB Movies Dataset 2024](https://www.kaggle.com/datasets/alanvourch/tmdb-movies-daily-updates)</u> offers over 900,000 movies with daily updates, providing rich data on titles, genres, ratings, production details, and cast & crew. Explore movie trends, build recommendation systems, or quench your cinematic curiosity with this comprehensive dataset.
+
 
 This project implements a fully automated Extract, Load, Transform (ELT) data pipeline for a Kaggle dataset. It leverages a modern data stack with the following technologies:
 
