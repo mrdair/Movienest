@@ -4,18 +4,23 @@ This project automates an Extract, Load, Transform (ELT) pipeline to ingest movi
 
 ## Description
 
+### Objective
+The Movinest project aims to automate the Extract, Load, Transform (ELT) pipeline for processing movie data from the TMDB Movies dataset on Kaggle. Leveraging technologies like Apache Airflow, Snowflake, Azure Blob Storage, dbt, and Google Looker, the project streamlines data ingestion, storage, transformation, and visualization processes. The objective is to create a scalable, maintainable, and efficient solution for data engineers and analysts to explore, analyze, and derive insights from a comprehensive collection of movie-related information.
+
 ### Dataset 
 <u>[The TMDB Movies Dataset 2024](https://www.kaggle.com/datasets/alanvourch/tmdb-movies-daily-updates)</u> offers over 900,000 movies with daily updates, providing rich data on titles, genres, ratings, production details, and cast & crew. Explore movie trends, build recommendation systems, or quench your cinematic curiosity with this comprehensive dataset.
 
-
+### Tools & Technologies 
 This project implements a fully automated Extract, Load, Transform (ELT) data pipeline for a Kaggle dataset. It leverages a modern data stack with the following technologies:
 
-- **Infrastructure as Code (IaC):** Terraform
-- **Workflow Orchestration:** Apache Airflow (Dockerized)
-- **Cloud Data Warehouse:** Snowflake
-- **Data Lake:** Azure Blob Storage
-- **Data Transformation:** dbt
-- **Data Visualization:** Google Looker (diagrams)
+- Infrastructure as Code (IaC) - [**Terraform**](https://www.terraform.io)
+- Workflow Orchestration - [**Airflow**](https://airflow.apache.org)
+- Containerization - [**Docker**](https://www.docker.com), [**Docker Compose**](https://docs.docker.com/compose/)
+- Cloud Data Warehouse - [**Snowflake**](https://www.snowflake.com)
+- Cloud Data Lake - [**Azure Blob Storage**](https://azure.microsoft.com/)
+- Transformation - [**dbt**](https://www.getdbt.com)
+- Visualization - [**Google Looker**](https://lookerstudio.google.com)
+- Language - [**Python**](https://www.python.org)
 
 ## Key Features
 
