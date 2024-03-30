@@ -24,7 +24,15 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 ### Architecture
 ![ELT Zoomcamp project ](https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline/assets/51988179/5f3432d1-f1a0-4468-8e3f-7d2f0ac743bc)
 
-### Final Result
+### Final Result 
+Our analysis utilizes two charts:
+
+1. **TMDB Genres Chart:** Categorizes movies based on their genre across all time periods.
+2. **TMDB Total Budget Chart:** Explores the budgetary trends of films according to their release year.
+
+[Access the detailed analysis and charts here](https://lookerstudio.google.com/reporting/b8c5951a-efa2-43c7-a518-dfdd25bf425f) 
+
+![GOOGLE LOOKER ](https://github.com/mrdair/Movienest/assets/51988179/7ef0eff4-0ef4-486e-904a-47a50111e11a)
 
 ## Key Features
 
