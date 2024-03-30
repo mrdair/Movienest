@@ -1,4 +1,4 @@
-# Movinest (Data Engineering Zoomcamp Final Project) - <u>[DataTalksClub](https://datatalks.club/)</u>
+# Movinest 
 
 This project automates an Extract, Load, Transform (ELT) pipeline to ingest movie data from the TMDB Movies dataset on Kaggle, store it in Azure Blob Storage, and transform it for use in Snowflake, a cloud data warehouse.
 
@@ -13,14 +13,18 @@ The Movinest project aims to automate the Extract, Load, Transform (ELT) pipelin
 ### Tools & Technologies 
 This project implements a fully automated Extract, Load, Transform (ELT) data pipeline for a Kaggle dataset. It leverages a modern data stack with the following technologies:
 
-- Infrastructure as Code (IaC) - [**Terraform**](https://www.terraform.io)
-- Workflow Orchestration - [**Airflow**](https://airflow.apache.org)
 - Containerization - [**Docker**](https://www.docker.com), [**Docker Compose**](https://docs.docker.com/compose/)
-- Cloud Data Warehouse - [**Snowflake**](https://www.snowflake.com)
+- Infrastructure as Code (IaC) - [**Terraform**](https://www.terraform.io)
 - Cloud Data Lake - [**Azure Blob Storage**](https://azure.microsoft.com/)
-- Transformation - [**dbt**](https://www.getdbt.com)
+- Cloud Data Warehouse - [**Snowflake**](https://www.snowflake.com)
+- Data Transformation - [**dbt**](https://www.getdbt.com)
+- Workflow Orchestration - [**Airflow**](https://airflow.apache.org)
 - Visualization - [**Google Looker**](https://lookerstudio.google.com)
-- Language - [**Python**](https://www.python.org)
+ 
+### Architecture
+![ELT Zoomcamp project ](https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline/assets/51988179/5f3432d1-f1a0-4468-8e3f-7d2f0ac743bc)
+
+### Final Result
 
 ## Key Features
 
@@ -30,9 +34,6 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 - **Scalability:** The infrastructure is provisioned using Terraform, allowing for easy scaling as data volume grows.
 - **Data Governance:** dbt ensures consistent data transformations and documentation.
 
-
-## Architecture
-![ELT Zoomcamp project ](https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline/assets/51988179/5f3432d1-f1a0-4468-8e3f-7d2f0ac743bc)
 
 ## Getting Started
 
@@ -51,7 +52,7 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/mrdair/TMDB-Movies-Dataset-ELT-Pipeline.git
+    git clone https://github.com/mrdair/Movienest.git
     ```
 
 2. **Create `.env` File:**
@@ -103,7 +104,5 @@ This project implements a fully automated Extract, Load, Transform (ELT) data pi
     - Create a Looker connection to Snowflake.
     - (Optional) Set up API credentials for Looker integration (if using).
 
-## Contact
-
-If you have any questions or require assistance with this project, feel free to reach out: [Mohammadreza Davoodabadi](mailto:mohammadrezadavidabadi@gmail.com).
-
+## Free Course & Supportive Community!
+A huge shoutout to [DataTalks.Club](https://datatalks.club) for their fantastic free Data Engineering [course](https://github.com/DataTalksClub/data-engineering-zoomcamp)! It provided the foundation for this project. Check it out if you're looking to level up your skills. 
