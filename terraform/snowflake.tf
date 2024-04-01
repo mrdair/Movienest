@@ -19,4 +19,3 @@ resource "snowflake_warehouse" "example_warehouse" {
   warehouse_size = "XSMALL"
   comment = "Example Snowflake warehouse"
 }
-
