@@ -34,6 +34,48 @@ Our analysis utilizes two charts:
 
 ![GOOGLE LOOKER ](https://github.com/mrdair/Movienest/assets/51988179/7ef0eff4-0ef4-486e-904a-47a50111e11a)
 
+### Project Directory Structure
+
+```
+.
+├── README.md
+├── airflow
+│   ├── Dockerfile
+│   ├── config
+│   ├── dags
+│   │   ├── download_kaggle_dataset.py
+│   │   ├── load_to_snowflake.py
+│   │   └── upload_to_blob_storage.py
+│   ├── docker-compose.yaml
+│   ├── logs
+│   ├── plugins
+│   │   └── operators
+│   │       ├── download_kaggle_operator.py
+│   │       ├── load_to_snowflake_operator.py
+│   │       └── upload_to_blob_operator.py
+│   └── requirements.txt
+├── dbt
+│   ├── analyses
+│   ├── dbt_packages
+│   ├── dbt_project.yml
+│   ├── logs
+│   ├── macros
+│   ├── models
+│   │   ├── tmdb_budget_chart.sql
+│   │   ├── tmdb_genres_chart.sql
+│   │   ├── tmdb_movies_models.sql
+│   │   └── tmdb_popularity_chart.sql
+│   ├── seeds
+│   ├── snapshots
+│   ├── target
+│   │   ├── compiled
+│   │   └── run
+│   └── tests
+└── terraform
+    ├── blob_storage.tf
+    └── snowflake.tf
+```
+
 ## Key Features
 
 - **Automation:** The entire ELT process is orchestrated by Airflow, running within Docker containers for a consistent and portable environment.
@@ -41,7 +83,6 @@ Our analysis utilizes two charts:
 - **Modular Design:** The pipeline is separated into well-defined stages (download, upload, transformation, visualization) for maintainability.
 - **Scalability:** The infrastructure is provisioned using Terraform, allowing for easy scaling as data volume grows.
 - **Data Governance:** dbt ensures consistent data transformations and documentation.
-
 
 ## Getting Started
 
@@ -108,6 +149,7 @@ Our analysis utilizes two charts:
 7. **Configure Google Looker:**
     - Create a Looker connection to Snowflake.
     - Set up API credentials for Looker integration.
+
 
 ## Free Course & Supportive Community!
 A huge shoutout to [DataTalks.Club](https://datatalks.club) for their fantastic free Data Engineering [course](https://github.com/DataTalksClub/data-engineering-zoomcamp)! It provided the foundation for this project. Check it out if you're looking to level up your skills. 
