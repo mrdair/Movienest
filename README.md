@@ -139,7 +139,8 @@ Our analysis utilizes two charts:
 
         ```bash
         cd airflow
-        docker-compose up -d
+        docker compose up airflow-init
+        docker compose up -d
         ```
 
 6. **Set Up dbt:**
